@@ -17,7 +17,7 @@ export function About() {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3">About SHILPZZZ Technologies</h2>
+                        <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3">About ShilpzzZ Technologies</h2>
                         <h3 className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
                             Your trusted partner in <br />
                             <span className="text-gradient">digital transformation.</span>
@@ -48,7 +48,7 @@ export function About() {
                         {/* Soft background glow */}
                         <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
 
-                        <GlassCard className="relative z-10 p-2 border-white/5 bg-[#0B0F19]/50 overflow-hidden h-[500px] flex items-center justify-center">
+                        <GlassCard className="relative z-10 p-2 border-white/5 bg-[#0B0F19]/50 overflow-hidden h-125 flex items-center justify-center">
                             {/* Abstract AI network representation */}
                             <div className="absolute inset-0 border border-white/5 rounded-xl flex items-center justify-center">
                                 <motion.div
@@ -68,18 +68,28 @@ export function About() {
                                 </div>
 
                                 {/* Connecting Nodes */}
-                                {[...Array(6)].map((_, i) => (
-                                    <motion.div
-                                        key={i}
-                                        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-                                        transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
-                                        className="absolute w-4 h-4 rounded-full bg-secondary shadow-[0_0_10px_rgba(0,217,255,0.8)]"
-                                        style={{
-                                            top: `${50 + 40 * Math.sin((i * Math.PI) / 3)}%`,
-                                            left: `${50 + 40 * Math.cos((i * Math.PI) / 3)}%`,
-                                        }}
-                                    />
-                                ))}
+                                {[...Array(6)].map((_, i) => {
+                                    const nodePositions = [
+                                        { top: "50%", left: "90%" },
+                                        { top: "84.64%", left: "70%" },
+                                        { top: "84.64%", left: "30%" },
+                                        { top: "50%", left: "10%" },
+                                        { top: "15.36%", left: "30%" },
+                                        { top: "15.36%", left: "70%" },
+                                    ];
+                                    return (
+                                        <motion.div
+                                            key={i}
+                                            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                                            transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
+                                            className="absolute w-4 h-4 rounded-full bg-secondary shadow-[0_0_10px_rgba(0,217,255,0.8)]"
+                                            style={{
+                                                top: nodePositions[i].top,
+                                                left: nodePositions[i].left,
+                                            }}
+                                        />
+                                    );
+                                })}
                             </div>
                         </GlassCard>
 

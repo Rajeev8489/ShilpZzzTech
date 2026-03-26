@@ -6,7 +6,8 @@ import { Services } from "@/components/Services";
 import { TechStack } from "@/components/TechStack";
 import { Industries } from "@/components/Industries";
 import { FAQ } from "@/components/FAQ";
-import { CTA } from "@/components/CTA";
+import { ContactForm } from "@/components/ContactForm";
+import { DashboardPreview } from "@/components/DashboardPreview";
 
 export default function Home() {
   return (
@@ -15,13 +16,14 @@ export default function Home() {
 
       <div className="w-full">
         <Hero />
+        <DashboardPreview />
         <TrustBar />
         <About />
         <Services />
         <TechStack />
         <Industries />
         <FAQ />
-        <CTA />
+        <ContactForm />
       </div>
 
     </main>

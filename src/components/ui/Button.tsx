@@ -12,7 +12,7 @@ const buttonVariants = cva(
                 default:
                     "bg-primary text-white hover:bg-primary/90 shadow-[0_0_15px_rgba(108,99,255,0.4)] hover:shadow-[0_0_25px_rgba(108,99,255,0.6)]",
                 gradient:
-                    "bg-gradient-primary text-white shadow-[0_0_15px_rgba(0,217,255,0.4)] hover:shadow-[0_0_25px_rgba(0,217,255,0.6)]",
+                    "relative overflow-hidden bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient-pan text-white shadow-[0_0_20px_rgba(108,99,255,0.4)] hover:shadow-[0_0_30px_rgba(0,217,255,0.7)] hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300",
                 outline:
                     "border border-primary/50 text-white hover:bg-primary/10",
                 ghost: "hover:bg-white/10 text-text-main",

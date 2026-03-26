@@ -16,7 +16,7 @@ export function CTA() {
                     className="relative rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(108,99,255,0.2)]"
                 >
                     {/* Vibrant Gradient Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#6C63FF] via-[#4A43D1] to-[#00D9FF] opacity-90" />
+                    <div className="absolute inset-0 bg-linear-to-br from-[#6C63FF] via-[#4A43D1] to-[#00D9FF] opacity-90" />
 
                     {/* Glass noise overlay */}
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
@@ -34,12 +34,14 @@ export function CTA() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                            <a href="mailto:support@shilpzzztech.in">
-                                <Button size="lg" className="w-full sm:w-auto bg-white text-primary hover:bg-white/90 shadow-xl gap-2 font-semibold">
-                                    <Mail className="w-4 h-4" />
-                                    Email Us
-                                </Button>
-                            </a>
+                            <Button
+                                size="lg"
+                                className="w-full sm:w-auto bg-black/20 text-white border border-white/30 hover:bg-black/40 backdrop-blur-sm gap-2"
+                                onClick={() => window.location.href = "mailto:support@shilpzzztech.in"}
+                            >
+                                <Mail className="w-4 h-4" />
+                                Email Us
+                            </Button>
                             <Button size="lg" className="w-full sm:w-auto bg-black/20 text-white border border-white/30 hover:bg-black/40 backdrop-blur-sm gap-2">
                                 Start Project
                                 <ArrowRight className="w-4 h-4" />

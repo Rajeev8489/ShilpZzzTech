@@ -1,6 +1,7 @@
 "use client";
 
-import { BrainCircuit, Code, Smartphone, Cloud, Scale } from "lucide-react";
+import { motion } from "framer-motion";
+import { BrainCircuit, Code, Smartphone, Cloud, Scale, ArrowRight, PlayCircle } from "lucide-react";
 import { GlassCard } from "./ui/GlassCard";
 
 const services = [
@@ -43,10 +44,10 @@ const services = [
 
 export function Services() {
     return (
-        <section id="services" className="py-24 relative bg-black/20">
+        <section id="services" className="py-24 relative bg-background">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">Our <span className="text-gradient">Services</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6 text-text-main">Our <span className="text-gradient">Services</span></h2>
                     <p className="text-lg text-text-main/70">
                         We deliver comprehensive technology solutions crafted to elevate your business operations and drive meaningful impact.
                     </p>
@@ -56,27 +57,54 @@ export function Services() {
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         return (
-                            <GlassCard
+                            <motion.div
                                 key={index}
-                                className={`flex flex-col h-full bg-[#121826]/40 hover:bg-[#121826]/80 ${service.colSpan}`}
-                                withHover
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className={service.colSpan}
                             >
-                                <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 border border-white/5 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
-                                    <Icon className="w-7 h-7 text-secondary group-hover:text-primary transition-colors" />
-                                </div>
+                                <GlassCard
+                                    className="flex flex-col h-full bg-white dark:bg-surface/40hover:bg-gray-50 dark:hover:bg-surface/70 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-xlgroup overflow-hidden relative cursor-pointerborder border-border dark:border-white/5"
+                                    withHover
+                                >
+                                    {/* Animated Gradient border effect on hover */}
+                                    <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-secondary/5 group-hover:from-primary/10 group-hover:to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
 
-                                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                                <p className="text-sm text-text-main/70 mb-6 flex-grow">{service.description}</p>
+                                    <div className="relative z-10 flex flex-col h-full">
+                                        <div className="flex justify-between items-start mb-6">
+                                            <div className="w-14 h-14 rounded-xl bg-surface dark:bg-white/5 flex items-center justify-center border border-border dark:border-white/5 group-hover:border-primary/50 group-hover:bg-primary/10 dark:group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] transition-all duration-300">
+                                                <Icon className="w-7 h-7 text-secondary group-hover:text-primary transition-colors duration-300" />
+                                            </div>
 
-                                <ul className="space-y-2 mt-auto border-t border-white/5 pt-4">
-                                    {service.features.map((feature, fIdx) => (
-                                        <li key={fIdx} className="flex items-center gap-2 text-sm text-white/80">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </GlassCard>
+                                            {/* Interactive Demo Tag hidden by default, slides in on hover */}
+                                            <div className="opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 flex items-center gap-1.5 text-xs font-semibold bg-white/10 text-text-main px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10">
+                                                <PlayCircle className="w-3.5 h-3.5 text-secondary" />
+                                                View Demo
+                                            </div>
+                                        </div>
+
+                                        <h3 className="text-xl font-bold text-text-main mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                                        <p className="text-sm text-text-main/70 mb-8 grow">{service.description}</p>
+
+                                        {/* Technology Badges */}
+                                        <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                                            {service.features.map((feature, fIdx) => (
+                                                <span key={fIdx} className="text-[10px] md:text-xs font-medium px-2.5 py-1 rounded-md bg-surface dark:bg-white/5 text-text-main/80 border border-border dark:border-white/5 group-hover:border-border/80 dark:group-hover:border-white/10 transition-colors">
+                                                    {feature}
+                                                </span>
+                                            ))}
+                                        </div>
+
+                                        {/* Action link */}
+                                        <div className="border-t border-border dark:border-white/5 pt-4 flex items-center text-sm font-semibold text-text-main/60 group-hover:text-secondary transition-colors">
+                                            Explore Capabilities
+                                            <ArrowRight className="w-4 h-4 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                                        </div>
+                                    </div>
+                                </GlassCard>
+                            </motion.div>
                         );
                     })}
                 </div>

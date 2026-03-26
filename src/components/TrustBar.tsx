@@ -26,7 +26,7 @@ const trustItems = [
 
 export function TrustBar() {
     return (
-        <section className="py-12 border-y border-white/5 bg-white/[0.02] backdrop-blur-sm relative z-20">
+        <section className="py-12 border-y border-white/5 bg-white/2 backdrop-blur-sm relative z-20">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
                     {trustItems.map((item, index) => {

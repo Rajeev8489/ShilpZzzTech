@@ -1,16 +1,28 @@
+/* stylelint-disable at-rule-no-unknown */
 @import "tailwindcss";
 
-@theme {
-  --color-primary: #6C63FF;
-  --color-secondary: #00D9FF;
-  --color-background: #0B0F19;
-  --color-surface: #121826;
-  --color-text-main: #E6EAF2;
+@custom-variant dark (&:is(.dark *));
 
+@theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-gradient-pan: gradient-pan 3s ease infinite;
+
+  @keyframes gradient-pan {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
   @keyframes accordion-down {
     from {
@@ -33,11 +45,82 @@
   }
 }
 
-/* Base styles */
+/* Theme variables */
 @layer base {
+
+  /* Common variables for all themes (fonts, animations) */
   :root {
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+  }
+
+  /* 1. Default (Light) Theme */
+  :root,
+  .light {
+    --background: #FFFFFF;
+    --foreground: #2f86c0;
+    --color-primary: #4F46E5;
+    --color-secondary: #06B6D4;
+    --color-surface: #0f0404;
+    --color-text-main: #18181B;
+    --glass-bg: rgb(255, 255, 255);
+    --glass-border: rgba(0, 0, 0, 0.05);
+  }
+
+  /* 2. Dark Theme */
+  .dark {
     --background: #0B0F19;
     --foreground: #E6EAF2;
+    --color-primary: #6C63FF;
+    --color-secondary: #00D9FF;
+    --color-surface: #121826;
+    --color-text-main: #E6EAF2;
+    --glass-bg: rgba(18, 24, 38, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  /* 3. Neon Cyber Theme */
+  .neon {
+    --background: #050117;
+    --foreground: #Fdfcff;
+    --color-primary: #FF00FF;
+    --color-secondary: #00FFFF;
+    --color-surface: #100632;
+    --color-text-main: #F4e2ff;
+    --glass-bg: rgba(16, 6, 50, 0.6);
+    --glass-border: rgba(255, 0, 255, 0.3);
+  }
+
+  /* 4. Glass Theme (High Blur & Transparency) */
+  .glass {
+    --background: #000000;
+    --foreground: #ffffff;
+    --color-primary: #ffffff;
+    --color-secondary: #aaaaaa;
+    --color-surface: transparent;
+    --color-text-main: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.15);
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
   }
 
   body {
@@ -48,7 +131,6 @@
     overflow-x: hidden;
   }
 
-  /* Smooth scroll */
   html {
     scroll-behavior: smooth;
   }
@@ -56,24 +138,32 @@
 
 /* Utility classes */
 @layer utilities {
+
   .glassmorphism {
-    @apply bg-surface/60 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,_0,_0,_0.1)];
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #6C63FF, #00D9FF);
   }
 
   .bg-gradient-primary {
-    @apply bg-gradient-to-r from-primary to-secondary;
+    background-image: linear-gradient(to right, #6C63FF, #00D9FF);
   }
 
-  /* Reveal animations mapping */
   .reveal-blur {
-    @apply motion-safe:opacity-0 motion-safe:blur-md motion-safe:translate-y-4 transition-all duration-700;
+    @apply motion-safe:opacity-0 motion-safe:translate-y-4 transition-all duration-700;
+    filter: blur(8px);
   }
 
   .reveal-blur.is-visible {
-    @apply opacity-100 blur-none translate-y-0;
+    @apply opacity-100 translate-y-0;
+    filter: blur(0);
   }
+
 }

@@ -2,16 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Button } from "./ui/Button";
-import { ChevronRight, Code2, Cpu, Zap } from "lucide-react";
+import { ChevronRight, Code2, Cpu, Zap, LayoutDashboard, Globe } from "lucide-react";
 import { GlassCard } from "./ui/GlassCard";
-
-const codeSnippet = `const aiModel = new ShilpzzzAI({
-  optimization: "maximum",
-  performance: "unmatched",
-  growth: true
-});
-
-await aiModel.accelerate();`;
 
 export function Hero() {
     return (
@@ -38,17 +30,23 @@ export function Hero() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-text-main/80 mb-10 leading-relaxed max-w-xl">
-                        We build AI-powered cutting-edge software solutions that drive innovation and accelerate business growth. Experience the future of technology today.
+                        We build AI-powered software solutions that accelerate innovation, automate processes, and transform digital businesses.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <Button variant="gradient" size="lg" className="w-full sm:w-auto text-base group gap-2">
-                            Explore Services
-                            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                        <Button variant="outline" size="lg" className="w-full sm:w-auto text-base">
-                            Get In Touch
-                        </Button>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Button variant="gradient" size="lg" className="w-full sm:w-auto text-base group gap-2 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(99,102,241,0.6)] transition-shadow">
+                                <LayoutDashboard className="w-5 h-5" />
+                                Explore Services
+                                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </motion.div>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Button variant="outline" size="lg" className="w-full sm:w-auto text-base gap-2 bg-background/50 backdrop-blur-md">
+                                <Globe className="w-5 h-5" />
+                                Start Your Project
+                            </Button>
+                        </motion.div>
                     </div>
                 </motion.div>
 
@@ -57,62 +55,44 @@ export function Hero() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="relative lg:h-[600px] flex items-center justify-center lg:justify-end"
+                    className="relative lg:h-screen flex items-center justify-center lg:justify-end"
                 >
-                    {/* Decorative code snippet widget */}
-                    <motion.div
-                        animate={{ y: [0, -15, 0] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-10 lg:-left-12 z-20 w-80 shadow-2xl"
-                    >
-                        <GlassCard className="!p-0 overflow-hidden border-primary/30 bg-[#0B0F19]/80 backdrop-blur-xl">
-                            <div className="flex items-center gap-2 px-4 py-2 bg-white/5 border-b border-white/5">
-                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                                <span className="text-xs text-text-main/50 ml-2 font-mono">ai-core.ts</span>
-                            </div>
-                            <div className="p-4 overflow-x-auto">
-                                <pre className="text-sm font-mono text-secondary">
-                                    <code>{codeSnippet}</code>
-                                </pre>
-                            </div>
-                        </GlassCard>
-                    </motion.div>
-
-                    {/* AI CPU Node representation */}
+                    {/* Interactive UI blocks that float on the right */}
                     <motion.div
                         animate={{ y: [0, 20, 0] }}
                         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute bottom-10 right-0 z-20"
+                        className="absolute bottom-1/4 right-0 lg:-right-10 z-20"
                     >
-                        <GlassCard className="flex items-center justify-center p-6 bg-[#0B0F19]/80 backdrop-blur-xl border-secondary/30 shadow-[0_0_30px_rgba(0,217,255,0.2)]">
-                            <Cpu className="w-12 h-12 text-secondary" />
+                        <GlassCard className="flex items-center justify-center p-2 bg-surface/80 backdrop-blur-xl border-secondary/30 shadow-[0_0_30px_rgba(6,182,212,0.15)]">
+                            <Cpu className="w-6 h-6 text-secondary" />
                             <div className="ml-4">
                                 <div className="text-sm text-text-main font-semibold">AI Processor Status</div>
-                                <div className="text-xs text-green-400 mt-1 flex items-center gap-1">
-                                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                                <div className="text-xs text-green-500 mt-1 flex items-center gap-1">
+                                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                     Running optimally
                                 </div>
                             </div>
                         </GlassCard>
                     </motion.div>
 
-                    {/* Central floating abstract graphic (could be an image or CSS art) */}
-                    <div className="relative w-64 h-64 md:w-80 md:h-80 z-10 rounded-full border border-primary/20 flex items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-secondary/20 before:scale-110 before:rotate-45 after:absolute after:inset-0 after:rounded-full after:border after:border-primary/40 after:scale-125">
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-10%] rounded-full border border-dashed border-secondary/30"
-                        />
-                        <motion.div
-                            animate={{ rotate: -360 }}
-                            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-30%] rounded-full border border-dashed border-primary/20"
-                        />
-                        <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary to-secondary blur-xl opacity-60 animate-pulse" />
-                        <Code2 className="absolute w-16 h-16 text-white/50 backdrop-blur-sm" />
-                    </div>
+                    {/* Floating UI Widget Left */}
+                    <motion.div
+                        animate={{ y: [0, -15, 0] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute top-20 left-0 lg:-left-20 z-20 hidden md:block"
+                    >
+                        {/*
+                        <GlassCard className="flex items-center gap-4 p-4 pr-12 border-primary/20 bg-background/60 shadow-[0_0_20px_rgba(108,99,255,0.1)]">
+                            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                                <Code2 className="w-5 h-5 text-primary" />
+                            </div>
+                            <div>
+                                <div className="text-xs text-text-main/60 font-medium">Deployment</div>
+                                <div className="text-sm text-text-main font-bold">Vercel Edge Ready</div>
+                            </div>
+                        </GlassCard>
+                         */}
+                    </motion.div>
 
                 </motion.div>
             </div>
