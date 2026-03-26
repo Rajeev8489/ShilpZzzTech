@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SHILPZZZ Technologies | Empowering Business with AI Innovation",
+  title: "ShilpzzZ Technologies | Empowering Business with AI Innovation",
   description: "We build AI-powered cutting-edge software solutions that drive innovation and accelerate business growth.",
   keywords: ["AI Software", "Custom Software Development", "SaaS", "Web Development", "Cloud Solutions", "Mobile App Development"],
 };
@@ -21,9 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} font-sans antialiased relative min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
         <AnimatedBackground />
 
