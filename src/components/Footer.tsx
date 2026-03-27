@@ -109,19 +109,16 @@ export function Footer() {
                             </li>
                         </ul>
                     </div>
-
-
-
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-2 border-t border-border dark:border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="pt-6 mt-6 border-t border-border dark:border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
                     <p className="text-text-main/50 text-sm text-center md:text-left">
                         © {new Date().getFullYear()} ShilpzzZ Technologies. All rights reserved.
                     </p>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-3 items-center">
                         {[Twitter, Linkedin, Github].map((Icon, i) => (
-                            <a key={i} href="#" aria-label="Social Link" className="w-10 h-8 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-text-main/60 hover:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all shadow-sm">
+                            <a key={i} href="#" aria-label="Social Link" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-text-main/60 hover:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all shadow-sm">
                                 <Icon className="w-4 h-4" />
                             </a>
                         ))}

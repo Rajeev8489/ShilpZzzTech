@@ -34,14 +34,12 @@ export function CTA() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                            <Button
-                                size="lg"
-                                className="w-full sm:w-auto bg-black/20 text-white border border-white/30 hover:bg-black/40 backdrop-blur-sm gap-2"
-                                onClick={() => window.location.href = "mailto:support@shilpzzztech.in"}
-                            >
-                                <Mail className="w-4 h-4" />
-                                Email Us
-                            </Button>
+                            <a href="mailto:support@shilpzzztech.in">
+                                <Button size="lg" className="w-full sm:w-auto bg-white text-primary hover:bg-white/90 shadow-xl gap-2 font-semibold">
+                                    <Mail className="w-4 h-4" />
+                                    Email Us
+                                </Button>
+                            </a>
                             <Button size="lg" className="w-full sm:w-auto bg-black/20 text-white border border-white/30 hover:bg-black/40 backdrop-blur-sm gap-2">
                                 Start Project
                                 <ArrowRight className="w-4 h-4" />
