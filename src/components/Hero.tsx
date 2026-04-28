@@ -58,7 +58,7 @@ export function Hero() {
                     className="relative lg:h-screen flex items-center justify-center lg:justify-end"
                 >
                     {/* Interactive UI blocks that float on the right */}
-                    <motion.div
+                    {/* <motion.div
                         animate={{ y: [0, 20, 0] }}
                         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                         className="absolute bottom-1/4 right-0 lg:-right-10 z-20"
@@ -73,15 +73,15 @@ export function Hero() {
                                 </div>
                             </div>
                         </GlassCard>
-                    </motion.div>
+                    </motion.div> */}
 
                     {/* Floating UI Widget Left */}
-                    <motion.div
+                    {/* <motion.div
                         animate={{ y: [0, -15, 0] }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute top-20 left-0 lg:-left-20 z-20 hidden md:block"
                     >
-                        {/*
+                        
                         <GlassCard className="flex items-center gap-4 p-4 pr-12 border-primary/20 bg-background/60 shadow-[0_0_20px_rgba(108,99,255,0.1)]">
                             <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
                                 <Code2 className="w-5 h-5 text-primary" />
@@ -91,8 +91,8 @@ export function Hero() {
                                 <div className="text-sm text-text-main font-bold">Vercel Edge Ready</div>
                             </div>
                         </GlassCard>
-                         */}
-                    </motion.div>
+                        
+                    </motion.div> */}
 
                 </motion.div>
             </div>
